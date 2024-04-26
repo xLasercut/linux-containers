@@ -19,6 +19,7 @@ rpm-ostree install \
   adw-gtk3-theme \
   openssh-server \
   firewalld \
-  papirus-icon-theme
+  papirus-icon-theme \
+  jetbrains-mono-fonts
 
 systemctl enable docker
