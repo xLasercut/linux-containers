@@ -19,13 +19,13 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Build
-        uses: docker/build-push-action@v5
+        uses: ./.github/actions/build-image/
         with:
           context: silverblue
-          push: false
-          platforms: linux/amd64
-          tags: lasercut/${{ env.SILVERBLUE_IMAGE_NAME }}:latest,lasercut/${{ env.SILVERBLUE_IMAGE_NAME }}:${{ github.ref_name }}
-          target: ${{ env.SILVERBLUE_IMAGE_NAME }}
+          name: ${{ env.SILVERBLUE_IMAGE_NAME }}
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
 
   build-silverblue-vmware:
     name: Build vmware silverblue image
@@ -36,12 +36,12 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Build
-        uses: docker/build-push-action@v5
+        uses: ./.github/actions/build-image/
         with:
           context: silverblue
-          push: false
-          platforms: linux/amd64
-          tags: lasercut/${{ env.SILVERBLUE_VM_IMAGE_NAME }}:latest,lasercut/${{ env.SILVERBLUE_VM_IMAGE_NAME }}:${{ github.ref_name }}
-          target: ${{ env.SILVERBLUE_VM_IMAGE_NAME }}
+          name: ${{ env.SILVERBLUE_VM_IMAGE_NAME }}
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
 
 
