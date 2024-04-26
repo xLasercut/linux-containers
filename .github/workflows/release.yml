@@ -5,9 +5,14 @@ env:
   SILVERBLUE_VM_IMAGE_NAME: silverblue-vmware
 
 on:
+  schedule:
+    - cron: '0 3 * * *'  # 03:00 am UTC everyday
   push:
     branches:
-      - 'master'
+      - master
+    paths-ignore:
+      - '**/README.md'
+  workflow_dispatch:
 
 jobs:
   build-silverblue:
@@ -17,6 +22,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          ref: master
 
       - name: Build
         uses: ./.github/actions/build-image/
@@ -34,6 +41,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          ref: master
 
       - name: Build
         uses: ./.github/actions/build-image/
