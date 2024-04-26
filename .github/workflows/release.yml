@@ -1,0 +1,43 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - 'master'
+
+jobs:
+  build-silverblue:
+    name: Build normal silverblue image
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build
+        uses: docker/build-push-action@v5
+        with:
+          context: silverblue
+          push: false
+          platforms: linux/amd64
+          tags: lasercut/silverblue:latest,lasercut/silverblue:${{ github.ref_name }}
+          target: NORMAL
+
+  build-silverblue-vmware:
+    name: Build vmware silverblue image
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build
+        uses: docker/build-push-action@v5
+        with:
+          context: silverblue
+          push: false
+          platforms: linux/amd64
+          tags: lasercut/silverblue-vmware:latest,lasercut/silverblue-vmware:${{ github.ref_name }}
+          target: VMWARE
+
+
