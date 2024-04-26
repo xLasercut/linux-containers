@@ -27,6 +27,9 @@ RUN rpm-ostree install \
     papirus-icon-theme && \
     ostree container commit
 
+# enable services    
+RUN systemctl enable docker
+
 FROM silverblue AS silverblue-vmware
 RUN mkdir -p /var/lib/alternatives
 RUN rpm-ostree install imwheel && \
