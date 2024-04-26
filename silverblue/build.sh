@@ -1,0 +1,24 @@
+#!/bin/bash
+
+set -ouex pipefail
+
+rpm-ostree override remove \
+  firefox firefox-langpacks \
+  gnome-terminal gnome-terminal-nautilus
+
+rpm-ostree install \
+  docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin \
+  screen \
+  vim \
+  make \
+  distrobox \
+  podman \
+  zsh \
+  firewall-config \
+  gnome-tweaks \
+  adw-gtk3-theme \
+  openssh-server \
+  firewalld \
+  papirus-icon-theme
+
+systemctl enable docker
