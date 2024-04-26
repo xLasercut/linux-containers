@@ -16,9 +16,8 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: Get current date
-      id: date
-      run: echo "::set-output name=date::$(date +'%Y.%m.%d.%H%M%S')"
+    - name: Set current date as env variable
+      run: echo "RELEASE_VERSION=$(date +'%Y.%m.%d.%H%M%S')" >> $GITHUB_ENV
       shell: bash
 
     - name: Set up QEMU
@@ -39,5 +38,5 @@ runs:
         context: ${{ inputs.context }}
         push: true
         platforms: linux/amd64
-        tags: lasercut/${{ inputs.name }}:latest,lasercut/${{ inputs.name }}:${{ steps.date.outputs.date }}
+        tags: lasercut/${{ inputs.name }}:latest,lasercut/${{ inputs.name }}:${{ env.RELEASE_VERSION }}
         target: ${{ inputs.name }}
