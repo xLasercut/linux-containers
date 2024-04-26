@@ -1,0 +1,63 @@
+name: CI
+
+on:
+  pull_request:
+
+jobs:
+  build-silverblue:
+    name: Test build silverblue
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build
+        uses: ./.github/actions/test-build-image/
+        with:
+          context: silverblue
+          name: silverblue
+
+  build-silverblue-vmware:
+    name: Test build silverblue vmware
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build
+        uses: ./.github/actions/test-build-image/
+        with:
+          context: silverblue
+          name: silverblue-vmware
+
+  build-main-apps-distrobox:
+    name: Test build main apps
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build
+        uses: ./.github/actions/test-build-image/
+        with:
+          context: distrobox
+          name: main-apps-distrobox
+
+  build-docker-cli-distrobox:
+    name: Test build docker cli
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build
+        uses: ./.github/actions/test-build-image/
+        with:
+          context: distrobox
+          name: docker-cli-distrobox
+
+
