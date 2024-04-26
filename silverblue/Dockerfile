@@ -4,7 +4,8 @@ RUN mkdir -p /var/lib/alternatives
 
 RUN rpm-ostree override remove \
     firefox firefox-langpacks \
-    gnome-terminal gnome-terminal-nautilus
+    gnome-terminal gnome-terminal-nautilus && \
+    ostree container commit
 
 RUN rpm-ostree install \
     vim \
@@ -17,14 +18,10 @@ RUN rpm-ostree install \
     adw-gtk3-theme \
     openssh-server \
     firewalld \
-    papirus-icon-theme
-
-RUN rm -rf /tmp/* /var/* && \
+    papirus-icon-theme && \
     ostree container commit
-
 
 FROM silverblue AS silverblue-vmware
 RUN mkdir -p /var/lib/alternatives
-RUN rpm-ostree install imwheel
-RUN rm -rf /tmp/* /var/* && \
+RUN rpm-ostree install imwheel && \
     ostree container commit

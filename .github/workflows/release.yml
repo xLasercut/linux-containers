@@ -2,7 +2,7 @@ name: Release
 
 env:
   SILVERBLUE_IMAGE_NAME: silverblue
-  SILVERBLUE_VM_IMAGE_NAME: silberblue-vmware
+  SILVERBLUE_VM_IMAGE_NAME: silverblue-vmware
 
 on:
   push:
