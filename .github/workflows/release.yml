@@ -1,5 +1,9 @@
 name: Release
 
+env:
+  SILVERBLUE_IMAGE_NAME: silverblue
+  SILVERBLUE_VM_IMAGE_NAME: silberblue-vmware
+
 on:
   push:
     branches:
@@ -20,8 +24,8 @@ jobs:
           context: silverblue
           push: false
           platforms: linux/amd64
-          tags: lasercut/silverblue:latest,lasercut/silverblue:${{ github.ref_name }}
-          target: normal
+          tags: lasercut/${{ env.SILVERBLUE_IMAGE_NAME }}:latest,lasercut/${{ env.SILVERBLUE_IMAGE_NAME }}:${{ github.ref_name }}
+          target: ${{ env.SILVERBLUE_IMAGE_NAME }}
 
   build-silverblue-vmware:
     name: Build vmware silverblue image
@@ -37,7 +41,7 @@ jobs:
           context: silverblue
           push: false
           platforms: linux/amd64
-          tags: lasercut/silverblue-vmware:latest,lasercut/silverblue-vmware:${{ github.ref_name }}
-          target: vmware
+          tags: lasercut/${{ env.SILVERBLUE_VM_IMAGE_NAME }}:latest,lasercut/${{ env.SILVERBLUE_VM_IMAGE_NAME }}:${{ github.ref_name }}
+          target: ${{ env.SILVERBLUE_VM_IMAGE_NAME }}
 
 

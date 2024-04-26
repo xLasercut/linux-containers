@@ -1,10 +1,10 @@
-FROM quay.io/fedora/fedora-silverblue:40 AS normal
+FROM quay.io/fedora/fedora-silverblue:40 AS silverblue
 
 RUN mkdir -p /var/lib/alternatives
 
 RUN rpm-ostree override remove \
-    firefox firefox-lang \
-    gnome-terminal
+    firefox firefox-langpacks \
+    gnome-terminal gnome-terminal-nautilus
 
 RUN rpm-ostree install \
     vim \
@@ -23,7 +23,7 @@ RUN rm -rf /tmp/* /var/* && \
     ostree container commit
 
 
-FROM normal AS vmware
+FROM silverblue AS silverblue-vmware
 RUN mkdir -p /var/lib/alternatives
 RUN rpm-ostree install imwheel
 RUN rm -rf /tmp/* /var/* && \
