@@ -1,4 +1,4 @@
-FROM quay.io/fedora/fedora-silverblue:40 AS NORMAL
+FROM quay.io/fedora/fedora-silverblue:40 AS normal
 
 RUN mkdir -p /var/lib/alternatives
 
@@ -23,7 +23,7 @@ RUN rm -rf /tmp/* /var/* && \
     ostree container commit
 
 
-FROM NORMAL AS VMWARE
+FROM normal AS vmware
 RUN mkdir -p /var/lib/alternatives
 RUN rpm-ostree install imwheel
 RUN rm -rf /tmp/* /var/* && \

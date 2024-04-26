@@ -21,7 +21,7 @@ jobs:
           push: false
           platforms: linux/amd64
           tags: lasercut/silverblue:latest,lasercut/silverblue:${{ github.ref_name }}
-          target: NORMAL
+          target: normal
 
   build-silverblue-vmware:
     name: Build vmware silverblue image
@@ -38,6 +38,6 @@ jobs:
           push: false
           platforms: linux/amd64
           tags: lasercut/silverblue-vmware:latest,lasercut/silverblue-vmware:${{ github.ref_name }}
-          target: VMWARE
+          target: vmware
 
 
