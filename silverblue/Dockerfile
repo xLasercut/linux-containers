@@ -1,5 +1,7 @@
 FROM quay.io/fedora/fedora-silverblue:40 AS silverblue
 
+COPY docker-ce.repo /etc/yum.repos.d/docker-ce.repo
+
 RUN mkdir -p /var/lib/alternatives
 
 RUN rpm-ostree override remove \
@@ -8,6 +10,10 @@ RUN rpm-ostree override remove \
     ostree container commit
 
 RUN rpm-ostree install \
+    # docker
+    docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin \
+    # other packages
+    screen \
     vim \
     make \
     distrobox \

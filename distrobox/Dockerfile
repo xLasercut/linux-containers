@@ -42,7 +42,7 @@ FROM base AS main-apps-distrobox
 # add repos
 RUN dnf config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
 RUN rpm --import https://packages.microsoft.com/keys/microsoft.asc
-RUN sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
+COPY vscode.repo /etc/yum.repos.d/vscode.repo
 
 # pyenv dependencies
 RUN dnf install -y git gcc make patch zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel tk-devel libffi-devel xz-devel
@@ -57,7 +57,7 @@ RUN rm -rf ./aws
 # themes
 RUN dnf install -y adw-gtk3-theme
 
-# use host's docker and podman
+# use host's executables
 RUN ln -s /usr/bin/distrobox-host-exec /usr/local/bin/podman
 RUN ln -s /usr/bin/distrobox-host-exec /usr/local/bin/docker
 RUN ln -s /usr/bin/distrobox-host-exec /usr/local/bin/xdg-open

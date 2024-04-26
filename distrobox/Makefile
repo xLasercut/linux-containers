@@ -1,2 +1,2 @@
 build-%:
-	docker build --target $* --tag $* .
+	docker build --target $* --tag lasercut/$* .
