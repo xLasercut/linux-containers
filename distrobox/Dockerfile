@@ -8,6 +8,13 @@ RUN dnf install -y bc bzip2 hostname less wget zip rsync man lsof openssh-client
 # set locale
 RUN localedef --inputfile=en_GB --charmap=UTF-8 en_GB.UTF-8
 
+# common host executables
+RUN ln -s /usr/bin/distrobox-host-exec /usr/local/bin/git
+RUN ln -s /usr/bin/distrobox-host-exec /usr/local/bin/podman
+RUN ln -s /usr/bin/distrobox-host-exec /usr/local/bin/xdg-open
+RUN ln -s /usr/bin/distrobox-host-exec /usr/local/bin/flatpak
+RUN ln -s /usr/bin/distrobox-host-exec /usr/local/bin/conmon
+
 
 FROM base AS docker-cli-distrobox
 
@@ -43,7 +50,7 @@ RUN rpm --import https://packages.microsoft.com/keys/microsoft.asc
 COPY vscode.repo /etc/yum.repos.d/vscode.repo
 
 # pyenv dependencies
-RUN dnf install -y git gcc make patch zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel tk-devel libffi-devel xz-devel
+RUN dnf install -y gcc make patch zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel tk-devel libffi-devel xz-devel
 
 # AWS cli
 RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
@@ -54,6 +61,9 @@ RUN rm -rf ./aws
 
 # themes
 RUN dnf install -y adw-gtk3-theme
+
+# host executables
+RUN ln -s /usr/bin/distrobox-host-exec /usr/local/bin/docker
 
 # packages
 RUN dnf install -y https://s3.amazonaws.com/session-manager-downloads/plugin/latest/linux_64bit/session-manager-plugin.rpm
