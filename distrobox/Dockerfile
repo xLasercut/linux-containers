@@ -66,8 +66,9 @@ RUN dnf install -y adw-gtk3-theme
 RUN ln -s /usr/bin/distrobox-host-exec /usr/local/bin/docker
 
 # packages
-RUN dnf install -y https://s3.amazonaws.com/session-manager-downloads/plugin/latest/linux_64bit/session-manager-plugin.rpm
-RUN dnf install -y packer
-RUN dnf install -y syncthing
-RUN dnf install -y openssl
-RUN dnf install -y code
+RUN dnf install -y https://s3.amazonaws.com/session-manager-downloads/plugin/latest/linux_64bit/session-manager-plugin.rpm \
+    packer \
+    syncthing \
+    openssl \
+    code \
+    yt-dlp
