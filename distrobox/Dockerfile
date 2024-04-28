@@ -34,8 +34,6 @@ RUN systemctl enable docker
 RUN curl https://amazon-ecr-credential-helper-releases.s3.us-east-2.amazonaws.com/0.7.1/linux-amd64/docker-credential-ecr-login -o /usr/local/bin/docker-credential-ecr-login
 RUN chmod +x /usr/local/bin/docker-credential-ecr-login
 
-RUN ln -s /usr/bin/distrobox-host-exec /usr/local/bin/git
-
 
 FROM base AS main-apps-distrobox
 
@@ -56,13 +54,6 @@ RUN rm -rf ./aws
 
 # themes
 RUN dnf install -y adw-gtk3-theme
-
-# use host's executables
-RUN ln -s /usr/bin/distrobox-host-exec /usr/local/bin/podman
-RUN ln -s /usr/bin/distrobox-host-exec /usr/local/bin/docker
-RUN ln -s /usr/bin/distrobox-host-exec /usr/local/bin/xdg-open
-RUN ln -s /usr/bin/distrobox-host-exec /usr/local/bin/flatpak
-RUN ln -s /usr/bin/distrobox-host-exec /usr/local/bin/conmon
 
 # packages
 RUN dnf install -y https://s3.amazonaws.com/session-manager-downloads/plugin/latest/linux_64bit/session-manager-plugin.rpm
