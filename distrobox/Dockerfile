@@ -46,8 +46,6 @@ FROM base AS main-apps-distrobox
 
 # add repos
 RUN dnf config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
-RUN rpm --import https://packages.microsoft.com/keys/microsoft.asc
-COPY vscode.repo /etc/yum.repos.d/vscode.repo
 
 # pyenv dependencies
 RUN dnf install -y gcc make patch zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel tk-devel libffi-devel xz-devel
@@ -67,8 +65,4 @@ RUN ln -s /usr/bin/distrobox-host-exec /usr/local/bin/docker
 
 # packages
 RUN dnf install -y https://s3.amazonaws.com/session-manager-downloads/plugin/latest/linux_64bit/session-manager-plugin.rpm \
-    packer \
-    syncthing \
-    openssl \
-    code \
-    yt-dlp
+    packer
