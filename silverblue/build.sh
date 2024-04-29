@@ -27,7 +27,6 @@ rpm-ostree install \
   openssl
 
 # ecr credential helper
-curl https://amazon-ecr-credential-helper-releases.s3.us-east-2.amazonaws.com/0.7.1/linux-amd64/docker-credential-ecr-login -o /usr/local/bin/docker-credential-ecr-login
-chmod +x /usr/local/bin/docker-credential-ecr-login
+chmod +x /var/usrlocal/bin/docker-credential-ecr-login
 
 systemctl enable docker
