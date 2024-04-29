@@ -20,6 +20,10 @@ rpm-ostree install \
   openssh-server \
   firewalld \
   papirus-icon-theme \
-  jetbrains-mono-fonts
+  jetbrains-mono-fonts \
+  syncthing \
+  yt-dlp \
+  code \
+  openssl
 
 systemctl enable docker
