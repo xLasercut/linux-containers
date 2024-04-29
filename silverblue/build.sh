@@ -26,4 +26,7 @@ rpm-ostree install \
   code \
   openssl
 
+# ecr credential helper
+chmod +x /var/usrlocal/bin/docker-credential-ecr-login
+
 systemctl enable docker
