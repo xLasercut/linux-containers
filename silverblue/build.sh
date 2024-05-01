@@ -27,9 +27,10 @@ rpm-ostree install \
   openssl \
   neofetch \
   awscli2 \
-  https://s3.amazonaws.com/session-manager-downloads/plugin/latest/linux_64bit/session-manager-plugin.rpm
+  packer
 
 # ecr credential helper
 chmod +x /bin/docker-credential-ecr-login
+chmod +x /bin/session-manager-plugin
 
 systemctl enable docker

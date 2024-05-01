@@ -2,7 +2,9 @@ FROM quay.io/fedora/fedora-silverblue:40 AS silverblue
 
 COPY docker-ce.repo /etc/yum.repos.d/docker-ce.repo
 COPY vscode.repo /etc/yum.repos.d/vscode.repo
+COPY hashicorp.repo /etc/yum.repos.d/hashicorp.repo
 COPY docker-credential-ecr-login /bin/docker-credential-ecr-login
+COPY session-manager-plugin /bin/session-manager-plugin
 COPY build.sh /tmp/build.sh
 
 RUN mkdir -p /var/lib/alternatives && \
