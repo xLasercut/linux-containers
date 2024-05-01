@@ -50,13 +50,6 @@ RUN dnf config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux
 # pyenv dependencies
 RUN dnf install -y gcc make patch zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel tk-devel libffi-devel xz-devel
 
-# AWS cli
-RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-RUN unzip awscliv2.zip
-RUN ./aws/install
-RUN rm -rf awscliv2.zip
-RUN rm -rf ./aws
-
 # themes
 RUN dnf install -y adw-gtk3-theme
 
@@ -65,4 +58,5 @@ RUN ln -s /usr/bin/distrobox-host-exec /usr/local/bin/docker
 
 # packages
 RUN dnf install -y https://s3.amazonaws.com/session-manager-downloads/plugin/latest/linux_64bit/session-manager-plugin.rpm \
-    packer
+    packer \
+    awscli2

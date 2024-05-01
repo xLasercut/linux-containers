@@ -24,9 +24,13 @@ rpm-ostree install \
   syncthing \
   yt-dlp \
   code \
-  openssl
+  openssl \
+  neofetch \
+  awscli2 \
+  packer
 
 # ecr credential helper
 chmod +x /bin/docker-credential-ecr-login
+chmod +x /bin/session-manager-plugin
 
 systemctl enable docker
