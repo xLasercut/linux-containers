@@ -27,7 +27,7 @@ rpm-ostree install \
   openssl \
   neofetch \
   awscli2 \
-  session-manager-plugin \
+  https://s3.amazonaws.com/session-manager-downloads/plugin/latest/linux_64bit/session-manager-plugin.rpm \
   packer
 
 # ecr credential helper
