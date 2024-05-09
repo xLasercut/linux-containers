@@ -25,7 +25,7 @@ rpm-ostree install \
   yt-dlp \
   code \
   openssl \
-  neofetch \
+  fastfetch \
   awscli2 \
   packer
 
