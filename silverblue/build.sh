@@ -9,8 +9,7 @@ rpm-ostree install \
 
 rpm-ostree override remove \
   firefox firefox-langpacks \
-  gnome-terminal gnome-terminal-nautilus \
-  ffmpeg-free
+  gnome-terminal gnome-terminal-nautilus
 
 rpm-ostree install \
   ffmpeg \
