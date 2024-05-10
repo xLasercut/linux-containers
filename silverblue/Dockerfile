@@ -21,5 +21,5 @@ RUN mkdir -p /var/lib/alternatives && \
 
 FROM silverblue AS silverblue-vmware
 RUN mkdir -p /var/lib/alternatives && \
-    rpm-ostree install imwheel && \
+    rpm-ostree install imwheel open-vm-tools open-vm-tools-desktop && \
     ostree container commit

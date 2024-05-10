@@ -4,11 +4,9 @@ set -ouex pipefail
 
 rpm-ostree override remove \
   firefox firefox-langpacks \
-  gnome-terminal gnome-terminal-nautilus \
-  mesa-va-drivers libavcodec-free libavfilter-free libavformat-free libavutil-free libpostproc-free libswresample-free libswscale-free noopenh264
+  gnome-terminal gnome-terminal-nautilus
 
 rpm-ostree install \
-  ffmpeg ffmpeg-libs gstreamer1-libav gstreamer1-plugin-openh264 gstreamer1-plugins-bad-freeworld gstreamer1-plugins-ugly mesa-va-drivers-freeworld \
   docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin \
   screen \
   vim \
