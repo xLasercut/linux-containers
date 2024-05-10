@@ -9,9 +9,12 @@ rpm-ostree install \
 
 rpm-ostree override remove \
   firefox firefox-langpacks \
-  gnome-terminal gnome-terminal-nautilus
+  gnome-terminal gnome-terminal-nautilus \
+  ffmpeg-free
 
 rpm-ostree install \
+  ffmpeg \
+  @multimedia @sound-and-video ffmpeg-libs gstreamer1-plugins-{bad-*,good-*,base} gstreamer1-plugin-openh264 gstreamer1-libav lame* \
   docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin \
   screen \
   vim \
