@@ -20,6 +20,9 @@ RUN mkdir -p /var/lib/alternatives && \
     ostree container commit
 
 FROM silverblue AS silverblue-vmware
+
+COPY build-vm.sh /tmp/build-vm.sh
+
 RUN mkdir -p /var/lib/alternatives && \
-    rpm-ostree install imwheel && \
+    /tmp/build-vm.sh && \
     ostree container commit
