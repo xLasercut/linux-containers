@@ -2,6 +2,11 @@
 
 set -ouex pipefail
 
+RELEASE="$(rpm -E %fedora)"
+RPMFUSION_MIRROR_RPMS="https://mirrors.rpmfusion.org"
+
+curl -Lo "/tmp/rpms/rpmfusion-free-release-${RELEASE}.noarch.rpm" "${RPMFUSION_MIRROR_RPMS}/free/fedora/rpmfusion-free-release-${RELEASE}.noarch.rpm"
+curl -Lo "/tmp/rpms/rpmfusion-nonfree-release-${RELEASE}.noarch.rpm" "${RPMFUSION_MIRROR_RPMS}/nonfree/fedora/rpmfusion-nonfree-release-${RELEASE}.noarch.rpm"
+
 rpm-ostree install \
-  "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm" \
-  "https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm"
+    /tmp/rpms/*.rpm
