@@ -5,9 +5,11 @@ set -ouex pipefail
 rpm-ostree override remove \
   firefox firefox-langpacks \
   gnome-terminal gnome-terminal-nautilus \
-  ffmpeg-free google-noto-sans-cjk-vf-fonts libavcodec-free libavdevice-free libavfilter-free libavformat-free libavutil-free libpostproc-free libswresample-free libswscale-free mesa-va-drivers
+  google-noto-sans-cjk-vf-fonts default-fonts-cjk-sans \
+  ffmpeg-free libavcodec-free libavdevice-free libavfilter-free libavformat-free libavutil-free libpostproc-free libswresample-free libswscale-free mesa-va-drivers
 
 rpm-ostree install \
+  google-noto-sans-balinese-fonts google-noto-sans-cjk-fonts google-noto-sans-javanese-fonts google-noto-sans-sundanese-fonts \
   ffmpeg ffmpeg-libs ffmpegthumbnailer intel-media-driver alsa-firmware libva-utils libva-intel-driver mesa-va-drivers-freeworld.x86_64 pipewire-codec-aptx libheif-freeworld libheif-tools \
   docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin \
   gcc patch zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel tk-devel libffi-devel xz-devel libuuid-devel gdbm-libs libnsl2 \
