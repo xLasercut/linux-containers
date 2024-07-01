@@ -3,8 +3,7 @@
 set -ouex pipefail
 
 rpm-ostree override remove \
-  firefox firefox-langpacks \
-  gnome-terminal gnome-terminal-nautilus
+  firefox firefox-langpacks
 
 rpm-ostree install \
   docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin \
