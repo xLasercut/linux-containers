@@ -3,7 +3,8 @@
 set -ouex pipefail
 
 rpm-ostree override remove \
-  firefox firefox-langpacks
+  firefox firefox-langpacks \
+  gnome-terminal gnome-terminal-nautilus
 
 rpm-ostree install \
   docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin \
@@ -27,7 +28,8 @@ rpm-ostree install \
   openssl \
   fastfetch \
   awscli2 \
-  packer
+  packer \
+  ptyxis
 
 # ecr credential helper
 chmod +x /bin/docker-credential-ecr-login
