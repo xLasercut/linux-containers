@@ -29,7 +29,8 @@ rpm-ostree install \
   fastfetch \
   awscli2 \
   packer \
-  ptyxis
+  ptyxis \
+  java-11-openjdk.x86_64
 
 # ecr credential helper
 chmod +x /bin/docker-credential-ecr-login
