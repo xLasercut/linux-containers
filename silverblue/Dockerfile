@@ -1,4 +1,4 @@
-FROM quay.io/fedora/fedora-silverblue:40 AS base
+FROM quay.io/fedora/fedora-silverblue:41 AS base
 
 COPY docker-ce.repo /etc/yum.repos.d/docker-ce.repo
 COPY vscode.repo /etc/yum.repos.d/vscode.repo
