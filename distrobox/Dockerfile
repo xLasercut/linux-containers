@@ -1,5 +1,8 @@
 FROM quay.io/fedora/fedora:41 AS base
 
+COPY docker-ce.repo /etc/yum.repos.d/docker-ce.repo
+COPY hashicorp.repo /etc/yum.repos.d/hashicorp.repo
+
 # repo dependencies
 RUN dnf install -y dnf-plugins-core curl jq unzip glibc-locale-source
 # distrobox dependencies
@@ -30,9 +33,6 @@ RUN dnf remove -y docker \
   docker-engine-selinux \
   docker-engine
 
-# add repos
-RUN dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
-
 # install docker
 RUN dnf install -y systemd docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 RUN systemctl enable docker
@@ -43,9 +43,6 @@ RUN chmod +x /usr/local/bin/docker-credential-ecr-login
 
 
 FROM base AS main-apps-distrobox
-
-# add repos
-RUN dnf config-manager --add-repo https://rpm.releases.hashicorp.com/fedora/hashicorp.repo
 
 # pyenv dependencies
 RUN dnf install -y gcc make patch zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel tk-devel libffi-devel xz-devel
