@@ -1,4 +1,4 @@
-FROM quay.io/fedora/fedora:latest AS base
+FROM quay.io/fedora/fedora:41 AS base
 
 # repo dependencies
 RUN dnf install -y dnf-plugins-core curl jq unzip glibc-locale-source
