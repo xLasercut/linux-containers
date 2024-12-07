@@ -3,6 +3,7 @@ FROM quay.io/fedora/fedora-silverblue:41 AS base
 COPY docker-ce.repo /etc/yum.repos.d/docker-ce.repo
 COPY vscode.repo /etc/yum.repos.d/vscode.repo
 COPY hashicorp.repo /etc/yum.repos.d/hashicorp.repo
+COPY vivaldi-fedora.repo /etc/yum.repos.d/vivaldi-fedora.repo
 COPY repo.sh /tmp/repo.sh
 
 RUN mkdir -p /var/lib/alternatives && \

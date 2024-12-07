@@ -28,7 +28,8 @@ rpm-ostree install \
   fastfetch \
   awscli2 \
   packer \
-  java-11-openjdk.x86_64
+  java-11-openjdk.x86_64 \
+  vivaldi-stable
 
 # ecr credential helper
 chmod +x /bin/docker-credential-ecr-login
