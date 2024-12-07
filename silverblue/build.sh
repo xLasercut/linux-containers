@@ -7,7 +7,7 @@ rpm-ostree override remove \
 
 rpm-ostree install \
   docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin \
-  "@development" zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel xz xz-devel libffi-devel findutils tk-devel \
+  gcc zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel xz xz-devel libffi-devel findutils tk-devel \
   screen \
   vim \
   make \
