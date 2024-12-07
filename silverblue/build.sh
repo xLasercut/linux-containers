@@ -28,7 +28,7 @@ rpm-ostree install \
   fastfetch \
   awscli2 \
   packer \
-  java-11-openjdk.x86_64 \
+  temurin-11-jdk \
   vivaldi-stable
 
 # ecr credential helper
