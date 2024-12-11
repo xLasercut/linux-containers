@@ -14,42 +14,42 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-silverblue:
-    name: Build normal silverblue image
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ env.CHECKOUT_BRANCH }}
-
-      - name: Build
-        uses: ./.github/actions/build-push-image/
-        with:
-          context: silverblue
-          name: silverblue
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-
-
-  build-silverblue-vmware:
-    name: Build vmware silverblue image
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ env.CHECKOUT_BRANCH }}
-
-      - name: Build
-        uses: ./.github/actions/build-push-image/
-        with:
-          context: silverblue
-          name: silverblue-vmware
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+#  build-silverblue:
+#    name: Build normal silverblue image
+#    runs-on: ubuntu-latest
+#
+#    steps:
+#      - name: Checkout
+#        uses: actions/checkout@v4
+#        with:
+#          ref: ${{ env.CHECKOUT_BRANCH }}
+#
+#      - name: Build
+#        uses: ./.github/actions/build-push-image/
+#        with:
+#          context: silverblue
+#          name: silverblue
+#          username: ${{ secrets.DOCKERHUB_USERNAME }}
+#          password: ${{ secrets.DOCKERHUB_TOKEN }}
+#
+#
+#  build-silverblue-vmware:
+#    name: Build vmware silverblue image
+#    runs-on: ubuntu-latest
+#
+#    steps:
+#      - name: Checkout
+#        uses: actions/checkout@v4
+#        with:
+#          ref: ${{ env.CHECKOUT_BRANCH }}
+#
+#      - name: Build
+#        uses: ./.github/actions/build-push-image/
+#        with:
+#          context: silverblue
+#          name: silverblue-vmware
+#          username: ${{ secrets.DOCKERHUB_USERNAME }}
+#          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
   build-main-apps-distrobox:
     name: Build main apps image
@@ -66,6 +66,22 @@ jobs:
         with:
           context: distrobox
           name: main-apps-distrobox
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+  build-main-apps-distrobox-deck:
+    name: Build main apps deck
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build
+        uses: ./.github/actions/build-push-image/
+        with:
+          context: distrobox
+          name: main-apps-distrobox-deck
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 

@@ -57,3 +57,9 @@ RUN ln -s /usr/bin/distrobox-host-exec /usr/local/bin/docker
 RUN dnf install -y https://s3.amazonaws.com/session-manager-downloads/plugin/latest/linux_64bit/session-manager-plugin.rpm \
     packer \
     awscli2
+
+
+FROM main-apps-distrobox AS main-apps-distrobox-deck
+
+RUN dnf install -y syncthing
+
