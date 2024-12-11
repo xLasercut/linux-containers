@@ -7,7 +7,6 @@ rpm-ostree override remove \
 
 rpm-ostree install \
   docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin \
-  gcc patch zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel tk-devel libffi-devel xz-devel libuuid-devel gdbm-libs libnsl2 \
   screen \
   vim \
   make \
@@ -28,7 +27,8 @@ rpm-ostree install \
   fastfetch \
   awscli2 \
   packer \
-  java-11-openjdk.x86_64
+  java-11-openjdk.x86_64 \
+  vivaldi-stable
 
 # ecr credential helper
 chmod +x /bin/docker-credential-ecr-login
