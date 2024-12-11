@@ -46,7 +46,7 @@ jobs:
           context: distrobox
           name: main-apps-distrobox
 
-  build-main-apps-distrobox-deck:
+  build-main-apps-deck-distrobox-deck:
     name: Test build main apps deck
     runs-on: ubuntu-latest
 
@@ -58,7 +58,7 @@ jobs:
         uses: ./.github/actions/test-build-image/
         with:
           context: distrobox
-          name: main-apps-distrobox-deck
+          name: main-apps-deck-distrobox
 
   build-docker-cli-distrobox:
     name: Test build docker cli
