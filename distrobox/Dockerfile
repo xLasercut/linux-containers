@@ -59,7 +59,7 @@ RUN dnf install -y https://s3.amazonaws.com/session-manager-downloads/plugin/lat
     awscli2
 
 
-FROM main-apps-distrobox AS main-apps-distrobox-deck
+FROM main-apps-distrobox AS main-apps-deck-distrobox
 
 RUN dnf install -y syncthing
 
