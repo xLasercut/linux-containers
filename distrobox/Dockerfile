@@ -1,15 +1,12 @@
-FROM quay.io/fedora/fedora:41 AS base
-
-COPY docker-ce.repo /etc/yum.repos.d/docker-ce.repo
-COPY hashicorp.repo /etc/yum.repos.d/hashicorp.repo
+FROM registry.opensuse.org/opensuse/distrobox:latest AS base
 
 # repo dependencies
-RUN dnf install -y dnf-plugins-core curl jq unzip glibc-locale-source
+RUN zypper install -y curl jq unzip
 # distrobox dependencies
-RUN dnf install -y bc bzip2 hostname less wget zip rsync man lsof openssh-clients xauth passwd pigz pinentry iputils procps tree diffutils cracklib-dicts zsh ncurses
+RUN zypper install -y bc bzip2 hostname less wget zip rsync man lsof openssh-clients xauth shadow pigz pinentry iputils procps tree diffutils cracklib-dict-small zsh ncurses
 
 # set locale
-RUN localedef --inputfile=en_GB --charmap=UTF-8 en_GB.UTF-8
+#RUN localedef --inputfile=en_GB --charmap=UTF-8 en_GB.UTF-8
 
 # common host executables
 RUN ln -s /usr/bin/distrobox-host-exec /usr/local/bin/git
@@ -21,20 +18,8 @@ RUN ln -s /usr/bin/distrobox-host-exec /usr/local/bin/conmon
 
 FROM base AS docker-cli-distrobox
 
-# remove existing docker
-RUN dnf remove -y docker \
-  docker-client \
-  docker-client-latest \
-  docker-common \
-  docker-latest \
-  docker-latest-logrotate \
-  docker-logrotate \
-  docker-selinux \
-  docker-engine-selinux \
-  docker-engine
-
 # install docker
-RUN dnf install -y systemd docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+RUN zypper install -y docker
 RUN systemctl enable docker
 
 # install ecr-credential-helper
@@ -44,22 +29,17 @@ RUN chmod +x /usr/local/bin/docker-credential-ecr-login
 
 FROM base AS main-apps-distrobox
 
-# pyenv dependencies
-RUN dnf install -y gcc make patch zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel tk-devel libffi-devel xz-devel
-
 # themes
-RUN dnf install -y adw-gtk3-theme
+RUN zypper install -y gtk3-metatheme-adwaita
 
 # host executables
 RUN ln -s /usr/bin/distrobox-host-exec /usr/local/bin/docker
 
 # packages
-RUN dnf install -y https://s3.amazonaws.com/session-manager-downloads/plugin/latest/linux_64bit/session-manager-plugin.rpm \
-    packer \
-    awscli2
+RUN zypper install -y asdf
 
 
 FROM main-apps-distrobox AS main-apps-deck-distrobox
 
-RUN dnf install -y syncthing
+RUN zypper install -y syncthing
 
