@@ -30,18 +30,16 @@ RUN chmod +x /usr/local/bin/docker-credential-ecr-login
 FROM base AS main-apps-distrobox
 
 # themes
-RUN zypper install -y adw-gtk3-theme
+RUN zypper install -y gtk3-metatheme-adwaita
 
 # host executables
 RUN ln -s /usr/bin/distrobox-host-exec /usr/local/bin/docker
 
 # packages
-RUN zypper install -y https://s3.amazonaws.com/session-manager-downloads/plugin/latest/linux_64bit/session-manager-plugin.rpm \
-    packer \
-    awscli2
+RUN zypper install -y asdf
 
 
 FROM main-apps-distrobox AS main-apps-deck-distrobox
 
-RUN zypper install -y syncthing asdf
+RUN zypper install -y syncthing
 
