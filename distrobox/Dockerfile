@@ -4,6 +4,8 @@ FROM registry.opensuse.org/opensuse/distrobox:latest AS base
 RUN zypper install -y curl jq unzip
 # distrobox dependencies
 RUN zypper install -y bc bzip2 hostname less wget zip rsync man lsof openssh-clients xauth shadow pigz pinentry iputils procps tree diffutils cracklib-dict-small zsh ncurses
+# asdf depdendencies
+RUN zypper install -y gcc automake bzip2 libbz2-devel xz xz-devel openssl-devel ncurses-devel readline-devel zlib-devel tk-devel libffi-devel sqlite3-devel gdbm-devel make findutils patch
 
 # set locale
 #RUN localedef --inputfile=en_GB --charmap=UTF-8 en_GB.UTF-8
