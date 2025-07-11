@@ -38,7 +38,7 @@ RUN zypper install -y gtk3-metatheme-adwaita
 RUN ln -s /usr/bin/distrobox-host-exec /usr/local/bin/docker
 
 # packages
-RUN zypper install -y asdf
+RUN curl https://mise.run | MISE_INSTALL_PATH=/usr/local/bin/mise sh
 
 
 FROM main-apps-distrobox AS main-apps-deck-distrobox
